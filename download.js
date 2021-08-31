@@ -48,14 +48,18 @@ function sleep(ms) {
 
         for (const b of aaa) {
           if (count > maxCount) continue
-          arr.push(b.src)
+          if (b.src) {
+            arr.push(b.src)
+          }
           b.click()
-          await new Promise(function(resolve) {
+          await new Promise((resolve) => {
             setTimeout(resolve, 2000)
           })
           const xx = window.document.querySelectorAll('#portfolioGaleryInner img')
           for (const xxx of xx) {
-            arr.push(xxx.src)
+            if (xxx.src) {
+              arr.push(xxx.src)
+            }
           }
           window.document.querySelector('.closeModalBtn').click()
           count ++
